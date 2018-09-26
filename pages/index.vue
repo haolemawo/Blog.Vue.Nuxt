@@ -20,9 +20,11 @@
                       </a>
                     </div>
                     <div class="postMetaInline postMetaInline-authorLockup ui-captionStrong u-flex1 u-noWrapWithEllipsis">
-                      <a class="ds-link ds-link--styleSubtle link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken" href="https://medium.com/@DamianDulisz?source=collection_home---6------0---------------------" dir="auto">{{post.bsubmitter}}</a>
+                      <nuxt-link class="" :to="`/blog/${post.bID}`">
+                        {{post.bsubmitter}}
+                      </nuxt-link>
                       <div class="ui-caption u-fontSize12 u-baseColor--textNormal u-textColorNormal js-postMetaInlineSupplemental">
-                        <nuxt-link class="link link--darken"  :to="`/post/${post.bID}`">
+                        <nuxt-link class="link link--darken"  :to="`/blog/${post.bID}`">
                           <time datetime="2018-08-15T17:52:49.897Z">{{post.bCreateTime}}</time>
                         </nuxt-link>
                         <span class="middotDivider u-fontSize12"></span><span class="readingTime" title="7 min read"></span>
@@ -31,7 +33,7 @@
                   </div>
                 </div>
               </div>
-              <nuxt-link class=""  :to="`/post/${post.bID}`">
+              <nuxt-link class=""  :to="`/blog/${post.bID}`">
                 <div class="u-maxWidth700 u-margin0 postArticle-content js-postField">
                   <section class="section section--body section--first section--last">
                     <div class="section-divider">
@@ -103,6 +105,7 @@
     },
     head () {
       return {
+        title:"首页",
         meta: [
           {
             name: "description",

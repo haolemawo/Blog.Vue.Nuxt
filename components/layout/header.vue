@@ -5,7 +5,7 @@
         <p class="description">Software Engineer.Currently working in Microsoft co-operation!</p>
         <ul class="navigations">
             <nuxt-link to="/" tag="li">
-                <i class="iconfont icon-homepage" title="回到首页"></i>
+                <i class="iconfont icon-homepage" title="回到首页">回到首页</i>
             </nuxt-link>
             <nuxt-link to="/post" tag="li">
                 <i class="iconfont icon-activity" title="全部文章"></i>
