@@ -1,5 +1,7 @@
 import Axios from "axios";
 import config from "~/config";
+import store from "~/store";
+
 
 const http = Axios.create({
     baseURL: config.api,
@@ -19,9 +21,25 @@ function LogicError (message, code, data) {
 LogicError.prototype = new Error();
 LogicError.prototype.constructor = LogicError;
 
-http.interceptors.request.use((data, headers) => {
-    return data;
-});
+  // http.interceptors.request.use((data, headers) => {
+  //     return data;
+  // });
+
+ //http request 拦截器
+  http.interceptors.request.use(
+    config => {
+      try {
+        if (window.localStorage.Token&&window.localStorage.Token.length>=128) {//store.state.token 获取不到值
+          config.headers.Authorization = window.localStorage.Token;
+        }
+      }catch (e) {
+      }
+      return config;
+    },
+    err => {
+      return Promise.reject(err);
+    }
+  );
 
 http.interceptors.response.use(response => {
     const data = response.data;

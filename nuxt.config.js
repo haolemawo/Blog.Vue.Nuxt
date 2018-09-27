@@ -16,6 +16,7 @@ module.exports = {
     ]
   },
   css: [
+    'element-ui/lib/theme-chalk/index.css'
   ],
   plugins: [
     { src: "~plugins/server_site/index.js", ssr: true }

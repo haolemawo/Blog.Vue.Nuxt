@@ -15,6 +15,7 @@
     validate ({ params }) {
       // 校验文章id是否为数字
       return /^\d+$/.test(params.id);
+
     },
     async asyncData ({ params, error }) {
       // 获取文章详情
@@ -28,7 +29,12 @@
         //error({ statusCode: 404, message: "出错啦" });
       }
     },
-    fetch ({ store, params }) {},
+    fetch ({ store, redirect  }) {
+      if (!(store.state.token&&store.state.token.length>=128)) {
+        return redirect('/login')
+      }
+
+    },
     data () {
       return {
         comments: []
